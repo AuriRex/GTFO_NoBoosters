@@ -1,0 +1,11 @@
+{
+    "name": "NoBoosters",
+    "author": "AuriRex",
+    "version_number": "1.0.0",
+    "website_url": "https://github.com/AuriRex/GTFO_NoBoosters/",
+    "description": "Removes boosters from the game entirely.",
+    "dependencies": [
+        "BepInEx-BepInExPack_GTFO-1.5.0",
+        "AuriRex-AllVanity-1.0.0"
+    ]
+}
