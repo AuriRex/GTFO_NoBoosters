@@ -48,6 +48,14 @@
 			<HintPath>$(LatestGeneratedGameAssembliesPath)UnityEngine.dll</HintPath>
 			<Private>False</Private>
 		</Reference>
+		<Reference Include="UnityEngine.UI">
+			<HintPath>$(LatestGeneratedGameAssembliesPath)UnityEngine.UI.dll</HintPath>
+			<Private>False</Private>
+		</Reference>
+		<Reference Include="Unity.TextMeshPro">
+			<HintPath>$(LatestGeneratedGameAssembliesPath)Unity.TextMeshPro.dll</HintPath>
+			<Private>False</Private>
+		</Reference>
 		<Reference Include="Il2Cppmscorlib">
 			<HintPath>$(LatestGeneratedGameAssembliesPath)Il2Cppmscorlib.dll</HintPath>
 			<Private>False</Private>
@@ -69,6 +77,10 @@
 		</Reference>
 		<Reference Include="Plugins-ASM">
 			<HintPath>$(LatestGeneratedGameAssembliesPath)Plugins-ASM.dll</HintPath>
+			<Private>False</Private>
+		</Reference>
+		<Reference Include="SNet_ASM">
+			<HintPath>$(LatestGeneratedGameAssembliesPath)SNet_ASM.dll</HintPath>
 			<Private>False</Private>
 		</Reference>
 	</ItemGroup>
