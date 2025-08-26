@@ -19,14 +19,14 @@ public class EntryPoint : BasePlugin
 {
     public const string PLUGIN_GUID = "dev.aurirex.gtfo.noboosters";
     public const string PLUGIN_NAME = "No Boosters";
-    public const string PLUGIN_VERSION = "1.1.0";
+    public const string PLUGIN_VERSION = "1.2.0";
 
     public const string DEVIOUSLICK_GUID = "com.mccad00.AmongDrip";
     public const string SIMPLEPROGRESSION_GUID = "dev.aurirex.gtfo.simpleprogression";
 
     private static Harmony _harmony;
     
-    private bool simpleProgressionLoaded;
+    private bool _simpleProgressionLoaded;
 
     internal static ManualLogSource L;
 
@@ -34,15 +34,15 @@ public class EntryPoint : BasePlugin
     {
         L = Log;
 
-        simpleProgressionLoaded = IL2CPPChainloader.Instance.Plugins.Any(kvp => string.Equals(kvp.Key, SIMPLEPROGRESSION_GUID, StringComparison.InvariantCultureIgnoreCase));
+        _simpleProgressionLoaded = IL2CPPChainloader.Instance.Plugins.Any(kvp => string.Equals(kvp.Key, SIMPLEPROGRESSION_GUID, StringComparison.InvariantCultureIgnoreCase));
 
         _harmony = new Harmony(PLUGIN_GUID);
         
         PatchAll(typeof(Patches));
 
-        if (!simpleProgressionLoaded)
+        if (!_simpleProgressionLoaded)
         {
-            Log.LogWarning("Simple Progression is not loaded, patching like usual.");
+            Log.LogDebug("Simple Progression is not loaded, patching like usual.");
             PatchAll(typeof(PersistentInventoryManager_Patches));
         }
             
