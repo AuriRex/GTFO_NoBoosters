@@ -24,7 +24,7 @@ public class EntryPoint : BasePlugin
     public const string DEVIOUSLICK_GUID = "com.mccad00.AmongDrip";
     public const string SIMPLEPROGRESSION_GUID = "dev.aurirex.gtfo.simpleprogression";
 
-    private Harmony _harmony;
+    private static Harmony _harmony;
     
     private bool simpleProgressionLoaded;
 
@@ -37,14 +37,23 @@ public class EntryPoint : BasePlugin
         simpleProgressionLoaded = IL2CPPChainloader.Instance.Plugins.Any(kvp => string.Equals(kvp.Key, SIMPLEPROGRESSION_GUID, StringComparison.InvariantCultureIgnoreCase));
 
         _harmony = new Harmony(PLUGIN_GUID);
-        _harmony.PatchAll(typeof(Patches));
+        
+        PatchAll(typeof(Patches));
 
         if (!simpleProgressionLoaded)
         {
             Log.LogWarning("Simple Progression is not loaded, patching like usual.");
-            _harmony.PatchAll(typeof(PersistentInventoryManager_Patches));
+            PatchAll(typeof(PersistentInventoryManager_Patches));
         }
             
         Log.LogInfo("Loaded and patched!");
+    }
+
+    private static void PatchAll(Type type)
+    {
+        foreach (var nestedType in type.GetNestedTypes())
+        {
+            _harmony.PatchAll(nestedType);
+        }
     }
 }
